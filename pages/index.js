@@ -3,11 +3,12 @@ import {useEffect, useState} from 'react'
 import CourseCard from '../components/CourseCard'
 import Header from '../ui/Header'
 
-const BASE_BACKEND_URL = process.env.NEXT_PUBLIC_VERCEL_ENV ? process.env.NEXT_PUBLIC_BASE_BACKEND: 'http://localhost:4000'
+const BASE_BACKEND_URL = process.env.NEXT_PUBLIC_VERCEL_ENV ? process.env.NEXT_PUBLIC_VERCEL_ENV: 'http://localhost:4000'
 
 export default function Home() {
 
   const [cours, setCours] = useState([])
+  console.log({BASE_BACKEND_URL, env: process.env.NEXT_PUBLIC_VERCEL_ENV})
   
   useEffect(() => {
       fetch(`${BASE_BACKEND_URL}/courses`)
@@ -22,7 +23,8 @@ export default function Home() {
       })
   }, [])
   
-console.log({cours})
+
+
 
   return (
     <>
