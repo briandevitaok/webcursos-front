@@ -31,7 +31,7 @@ console.log({cours})
 
      <div className='df fdc p5 tac mb5'>
       <h1 style={{lineHeight:'2rem'}}>"Codifica siempre como si la persona que finalmente mantendrá tu código fuera un psicópata violento que sabe dónde vives"</h1>
-      <quote className="">--Martin Golding</quote>
+      <span className="">--Martin Golding</span>
      </div>
      <h2 className='mt20'>CURSOS DISPONIBLES</h2>
 
