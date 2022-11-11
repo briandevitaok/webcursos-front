@@ -1,6 +1,7 @@
 
 import {useEffect, useState} from 'react'
-import Image from 'next/image'
+import CourseCard from '../components/CourseCard'
+import Header from '../ui/Header'
 
 
 export default function Home() {
@@ -24,38 +25,25 @@ console.log({cours})
 
   return (
     <>
-    <div className='df fdc aic jcc mt20 c'>
-    <h1>🚀 Forza Cursos </h1>
+    <div className='df fdc aic jcc'>
+
+    <Header/>    
+
+     <div className='df fdc p5 tac mb5'>
+      <h1 style={{lineHeight:'2rem'}}>"Codifica siempre como si la persona que finalmente mantendrá tu código fuera un psicópata violento que sabe dónde vives"</h1>
+      <quote className="">--Martin Golding</quote>
+     </div>
+     <h2 className='mt20'>CURSOS DISPONIBLES</h2>
+
+    <div className='mt20'>
     {
-      cours.map( cours => (
-        <div className='df fdc' key={cours._id} style={{width:'50rem'}}>
-        <div className='df jcsb'  style={{width:'50rem',background:'white',padding:'0.75rem', borderRadius:'0.5rem'}}>
-          <div style={{boxShadow:'0 2px 5px rgba(0,0,0,0.2)', marginRight:'1rem'}}>
-        <Image
-         src={cours.thumbnail}
-         alt={cours.name}
-         width={150 * 1.77}
-         height={150}
-        />
-          </div>
-
-          <div className='jc fcd' style={{width:'60%'}}>
-        <h3 className='cblack mv5' style={{color:'#222'}}>{cours.name}</h3>
-        <p className='cblack m0'>Este curso esta dictado para aquellas personas que quieran empezar a programar en el lenguaje
-          mas demandado y uno de los consideras mas simples para aprender.
-        </p>
-
-          </div>
-      </div>
-        <div className='mt20'>
-          <video  src={cours.videos[0].videoUrl} style={{width:'100%'}} autoPlay controls></video>
-        </div>
-        </div>
-
-      
-      ))
+      cours.map( cours => <CourseCard cours={cours} key={cours._id}/>)
     }
  </div>
+    </div>
+
+
+
     </>
     
   )

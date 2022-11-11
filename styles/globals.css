@@ -1,6 +1,7 @@
 :root {
   --white: #dfdfdf;
   --black: #222;
+  --blackDark: #111;
 }
 
 html,
@@ -28,6 +29,9 @@ a {
   align-items: center;
 }
 
+.tac {
+  text-align: center;
+}
 .jcsb {
   justify-content: space-between;
 }
@@ -58,8 +62,16 @@ a {
   margin-bottom: O.5rem;
 }
 
+.mb5 {
+  margin-bottom: 0.5rem;
+}
+
 .mt20 {
   margin-top: 2rem;
+}
+
+.p5 {
+  padding: 0.5rem;
 }
 
 .cursorp {
@@ -69,6 +81,11 @@ a {
 .br5 {
   border-radius: 0.5rem;
 }
+
+.w100p {
+  width: 100%;
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {
