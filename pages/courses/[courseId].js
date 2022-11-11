@@ -1,15 +1,23 @@
 import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 import CourseCard from "../../components/CourseCard"
 import Header from "../../ui/Header"
 
 
 const CoursesPage = () => {
 
+    const [course, setCourse] = useState({})
+
     const router = useRouter()
     const {courseId} = router.query
 
-    const course = JSON.parse(localStorage.getItem(courseId))
-    console.log({course})
+
+
+    useEffect(() => {
+    const courseFromLs = JSON.parse(localStorage.getItem(courseId))
+    setCourse(courseFromLs)
+    }, [])
+    
 
   return (
     <>
