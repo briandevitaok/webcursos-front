@@ -4,6 +4,10 @@ const Header = () => {
     
   const router = useRouter()
 
+  const handleLogin = () => {
+    window.location = 'http://localhost:4000/auth/google'
+  }
+
   return (
     <>
   <div className='df aic jcsb w100p p5' 
@@ -15,6 +19,7 @@ const Header = () => {
         <h1 className="cursorp" onClick={()=> router.back()}>🚀 Forza Cursos</h1>
         <button
         className=''
+        onClick={handleLogin}
         >
           Iniciar Session
         </button>
