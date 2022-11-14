@@ -1,46 +1,37 @@
-import Image from "next/image"
-import { useRouter } from 'next/router'
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-const CourseCard = ({cours}) => {
-    const {thumbnail, name, _id,description} = cours
-  const router = useRouter()
+const CourseCard = ({ cours }) => {
+  const { thumbnail, name, _id, description } = cours;
+  const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/courses/${_id}`)
-    localStorage.setItem(_id, JSON.stringify(cours))
-  }
-
+    router.push(`/courses/${_id}`);
+    localStorage.setItem(_id, JSON.stringify(cours));
+  };
 
   return (
     <>
-      
-        <div className='df jcsb card-cointainer cursorp' onClick={handleClick}>
-          <div 
+      <div className="df jcsb card-cointainer cursorp" onClick={handleClick}>
+        <div
           style={{
-            boxShadow:'0 2px 5px rgba(0,0,0,0.2)', 
-            marginRight:'1rem',
-            width:`${150 * 1.77}px`,
-            }}>
-        <Image
-         src={thumbnail}
-         alt={name}
-         width={150 * 1.77}
-         height={150}
-       
-        />
-          </div>
+            boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+            marginRight: '1rem',
+            width: `${150 * 1.77}px`,
+          }}
+        >
+          <Image src={thumbnail} alt={name} width={150 * 1.77} height={150} />
+        </div>
 
-          <div className='jc fcd card-body'>
-        <h3 className='cblack mv5' style={{color:'#222'}}>{name}</h3>
-        <p className='cblack m0'>{description}</p>
-
-          </div>
+        <div className="jc fcd card-body">
+          <h3 className="cblack mv5" style={{ color: '#222' }}>
+            {name}
+          </h3>
+          <p className="cblack m0">{description}</p>
+        </div>
       </div>
 
-
-
-
-     <style jsx>{`
+      <style jsx>{`
 
             .card-cointainer{
              
@@ -64,7 +55,7 @@ const CourseCard = ({cours}) => {
             @media (max-width: 800px) {
               .card-cointainer {
               flex-direction: column;
-              width: ${150 * 2 + "px" };
+              width: ${150 * 2 + 'px'};
               margin: 0auto;
               }
 
@@ -74,12 +65,8 @@ const CourseCard = ({cours}) => {
                 width: 100%;
               }
         `}</style>
-    
-    
-    
-    
     </>
-  )
-}
+  );
+};
 
-export default CourseCard
+export default CourseCard;

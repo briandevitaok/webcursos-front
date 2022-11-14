@@ -1,11 +1,20 @@
 import { useRouter } from "next/router"
+import { useContext } from "react"
+import { AuthContext } from "../pages/_app"
 
 const Header = () => {
+
+  const {dispatch, state:{isAuthenticated}} = useContext(AuthContext)
+  console.log({isAuthenticated})
     
   const router = useRouter()
 
   const handleLogin = () => {
     window.location = 'http://localhost:4000/auth/google'
+  }
+
+  const handleLogout = () => {
+    dispatch({type:'LOGOUT'})
   }
 
   return (
@@ -17,12 +26,11 @@ const Header = () => {
   
   }}>
         <h1 className="cursorp" onClick={()=> router.back()}>🚀 Forza Cursos</h1>
-        <button
-        className=''
-        onClick={handleLogin}
-        >
-          Iniciar Session
-        </button>
+        
+       { !isAuthenticated && <button className=''onClick={handleLogin} >Iniciar Sesion</button> }
+       { isAuthenticated && <button className=''onClick={handleLogout} >Cerrar Sesion</button> }
+        
+        
     </div>
     
     
