@@ -29,6 +29,7 @@ const Header = () => {
         
        { !isAuthenticated && <button className=''onClick={handleLogin} >Iniciar Sesion</button> }
        { isAuthenticated && <button className=''onClick={handleLogout} >Cerrar Sesion</button> }
+       { isAuthenticated && <button className=''onClick={handleLogout} >Cerrar Sesion</button> }
         
         
     </div>
