@@ -1,12 +1,11 @@
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
+import Header from '../ui/Header';
 import { AuthContext } from './_app';
 
 const profile = () => {
   const router = useRouter();
   const { dispatch, state } = useContext(AuthContext);
-  console.log(state);
-
   useEffect(() => {
     if (router.query.login_info) {
       const login_info = JSON.parse(router.query.login_info);
@@ -15,7 +14,11 @@ const profile = () => {
     }
   }, [router.query?.login_info]);
 
-  return <div>profile</div>;
+  return (
+  <>
+    <Header />
+  </>
+  )
 };
 
 export default profile;

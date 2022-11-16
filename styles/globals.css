@@ -74,6 +74,10 @@ a {
   padding: 0.5rem;
 }
 
+.p10 {
+  padding: 0.1rem;
+}
+
 .cursorp {
   cursor: pointer;
 }

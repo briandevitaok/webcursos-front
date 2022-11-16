@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import CourseCard from '../components/CourseCard';
+import { config } from '../constants/config';
 import Header from '../ui/Header';
 
-const BASE_BACKEND_URL = process.env.NEXT_PUBLIC_VERCEL_ENV
-  ? process.env.NEXT_PUBLIC_BASE_BACKEND_URL
-  : 'http://localhost:4000';
+
 
 export default function Home() {
   const [cours, setCours] = useState([]);
 
   useEffect(() => {
-    fetch(`${BASE_BACKEND_URL}/courses`)
+    fetch(`${config.BASE_BACKEND_URL}/courses`)
       .then((res) => res.json())
       .then(({ ok, data }) => {
         if (ok) {

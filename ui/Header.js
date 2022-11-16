@@ -25,7 +25,7 @@ const Header = () => {
       boxShadow:'0 2px 5px rgba(0, 0, 0, 0.5)'
   
   }}>
-        <h1 className="cursorp" onClick={()=> router.back()}>🚀 Forza Cursos</h1>
+        <h1 className="cursorp" onClick={()=> router.push('/')} >🚀 Forza Cursos</h1>
         
        { !isAuthenticated && <button className=''onClick={handleLogin} >Iniciar Sesion</button> }
        { isAuthenticated && <button className=''onClick={handleLogout} >Cerrar Sesion</button> }
