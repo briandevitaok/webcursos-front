@@ -1,11 +1,12 @@
 import { useRouter } from "next/router"
 import { useContext } from "react"
 import { AuthContext } from "../pages/_app"
+import Button from '@mui/material/Button';
 
 const Header = () => {
 
   const {dispatch, state:{isAuthenticated}} = useContext(AuthContext)
-  console.log({isAuthenticated})
+
     
   const router = useRouter()
 
@@ -27,10 +28,8 @@ const Header = () => {
   }}>
         <h1 className="cursorp" onClick={()=> router.push('/')} >🚀 Forza Cursos</h1>
         
-       { !isAuthenticated && <button className=''onClick={handleLogin} >Iniciar Sesion</button> }
-       { isAuthenticated && <button className=''onClick={handleLogout} >Cerrar Sesion</button> }
-       { isAuthenticated && <button className=''onClick={handleLogout} >Cerrar Sesion</button> }
-        
+       { !isAuthenticated && <Button variant="contained" onClick={handleLogin} >Iniciar Sesion</Button> }
+       { isAuthenticated && <Button variant="contained"  onClick={handleLogout} >Cerrar Sesion</Button> }
         
     </div>
     

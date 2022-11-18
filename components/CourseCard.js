@@ -1,11 +1,19 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useContext } from 'react';
+import { AuthContext } from '../pages/_app';
+import Swal from 'sweetalert2'
+
 
 const CourseCard = ({ cours }) => {
+
+  const {state: {isAuthenticated}} = useContext(AuthContext)
+
   const { thumbnail, name, _id, description } = cours;
   const router = useRouter();
 
   const handleClick = () => {
+    
     router.push(`/courses/study/${_id}`);
     localStorage.setItem(_id, JSON.stringify(cours));
   };
@@ -66,7 +74,7 @@ const CourseCard = ({ cours }) => {
               }
         `}</style>
     </>
-  );
+   );
 };
 
 export default CourseCard;
