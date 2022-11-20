@@ -21,7 +21,7 @@ const StudyPage = () => {
     if (!!courseId && olReadyCheck) {
       console.log("FECHING", olReadyCheck)
       console.log({user})
-      const query_params = !!user ? `?user_id=${user._id}`: ''
+      const query_params = !!user ? `?user_id=${user.sub}`: ''
       console.log({query_params})
       fetch(`${config.BASE_BACKEND_URL}/courses/${courseId}${query_params}`)
         .then((res) => res.json())
