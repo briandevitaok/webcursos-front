@@ -4,13 +4,15 @@ import { useReducer, createContext, useEffect } from 'react';
 export const AuthContext = createContext(); // added this
 
 const initialState = {
+  olReadyCheck: false,
   isAuthenticated: false,
   user: null,
   jwt: null,
 };
 
+
+
 const reducer = (state, action) => {
-  console.log({ action });
   switch (action.type) {
     case 'LOGIN':
       localStorage.setItem('user', JSON.stringify(action.payload.user));
@@ -23,6 +25,7 @@ const reducer = (state, action) => {
       };
     case 'LOGOUT':
       localStorage.clear();
+      window.location = '/';
       return {
         ...state,
         isAuthenticated: false,
@@ -31,7 +34,8 @@ const reducer = (state, action) => {
     case 'SET_LOGGED_USER':
       return {
         ...state,
-        isAuthenticated: true,
+        olReadyCheck: action.payload.olReadyCheck,
+        isAuthenticated: action.payload.isAuthenticated,
         user: action.payload.user,
         jwt: action.payload.jwt,
       };
@@ -44,11 +48,21 @@ function MyApp({ Component, pageProps }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user'));
     const jwt = localStorage.getItem('jwt');
 
     if (!!user || !!jwt) {
-      dispatch({ type: 'SET_LOGGED_USER', payload: { user, jwt } });
+      dispatch({ type: 'SET_LOGGED_USER', payload: { user, jwt, isAuthenticated:true, olReadyCheck:true } });
+    } else {
+      dispatch({
+        type: 'SET_LOGGED_USER',
+        payload: {
+          user: null,
+          jwt: null,
+          isAuthenticated: false,
+          olReadyCheck: true,
+        },
+      });
     }
   }, []);
 
